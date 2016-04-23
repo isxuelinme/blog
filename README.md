@@ -1,2 +1,1 @@
-# blog
-blog
+www.xuelin.me
