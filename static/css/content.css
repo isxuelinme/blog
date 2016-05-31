@@ -1,5 +1,12 @@
+@media screen and (max-width: 960px) {
+body{
+margin:0 10px;
+}
+}
+@media screen and (min-width: 960px) {
 body{
 margin:0 50px;
+}
 }
 .blog_details{
 margin: 0 auto;
