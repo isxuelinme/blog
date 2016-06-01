@@ -1,12 +1,18 @@
+html,body{
+	height:100%;
+}
 @media screen and (max-width: 960px) {
 body{
-margin:0 20px;
+margin:20px;
 }
 }
 @media screen and (min-width: 960px) {
 body{
-margin:0 50px;
+margin:20px 50px;
 }
+}
+.music{
+	text-align: center;
 }
 .blog_details{
 margin: 0 auto;
@@ -19,11 +25,12 @@ p {
     margin: 10px 0;
 }
 .topic {
+  	height: 100%;
     text-align: center;
 }
 .topic img {
-	width:100%;
-	height:100%;
+	width: 100%;
+	height:98%;
 }
 .topic #imgTitle{
     padding: 12px;
