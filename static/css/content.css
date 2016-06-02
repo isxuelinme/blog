@@ -13,6 +13,7 @@ margin:20px 50px;
 }
 .blog_details{
 margin: 0 auto;
+font-family:微软雅黑;font-size:14.03px;color:#000000;
 }
 .extendInfo{
 margin:15px 0;
@@ -20,6 +21,8 @@ color: seagreen;
 }
 p {
     margin: 10px 0;
+    line-height: 26.6px;
+    letter-spacing: 1.99px;
 }
 .topic {
   	max-height: 100%;
