@@ -1,0 +1,222 @@
+<html><head>
+<title>t</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="./static/js/musicPlayer.js"></script>
+</head>
+<body>
+<style>
+html{
+    background: #eee;
+}
+body{
+		text-align: center;
+}
+ul,li{
+	list-style: none;
+	padding:0;
+}
+.musixBox{
+	position: relative;
+	width:300px;
+	margin: 150px auto;
+	background: #CC6F6F;
+    height: 757px;
+}
+.musixBox #musicKeyWords{
+	border: 1px #E0DADA double;
+	width: 300px;
+	height: 45px;
+	padding:10px;'
+}
+.musixBox #musicKeyWords:focus{
+	border-right: 1px red double;
+    outline: none;
+}
+.musixBox .searchList{
+	display: none;
+	height: 757px;
+	border: 3px;
+	border-left: 0;
+	border-color: #4A8A4C;
+    border-style: solid;
+    border-top: 0;
+    border-bottom: 0;
+	text-align: center;
+	width: 248px;
+    position: absolute;
+    top: -16px;
+	left: 300px;
+	
+}
+.musixBox .searchList li{
+	text-align: left;
+	font-size: 12px;
+    padding: 12px 15px;
+}
+.musixBox .searchList li span.artist{
+    color: #714949;
+}
+.musixBox .searchList li:hover{
+	background: whitesmoke;
+	cursor: pointer;
+}
+.musixBox .musicPlayer{
+	margin-top: 50px;
+    height: 100px;
+    background-color: white;	
+}
+.musixBox .musicInfo{
+	float: left;	
+	margin-left: 15px;
+	margin-top: 8px;
+}
+#musicCover {
+	border-radius: 41px;
+    border: 2px #1A86DC solid;
+	animation:circle 4s infinite linear;/*匀速 循环*/
+}
+	@keyframes circle{
+	0%{ transform:rotate(0deg); }
+	100%{ transform:rotate(-360deg); }
+	}
+.musixBox .musicController{
+	float: right;	
+	margin-top: 20px;
+}
+#play, #pause,#prev,#next{
+	background: url(./static/images/audio_bg.png) no-repeat;
+	width: 30px;
+	height: 30px;
+	float: right;
+    margin: 15px 5px;
+	cursor: pointer;
+}
+#prev{
+    background-position: -24px 8px;
+}
+#prev:hover {
+    background-position: -24px -20px;
+}
+#play{
+    background-position: 8px 2px;
+}
+#play:hover {
+    background-position: 8px -29px;
+}
+#pause {
+	background-position: -28px -60px;
+}
+#pause:hover {
+    background-position: -58px -60px;
+}
+#next{
+    background-position: -45px 1px;
+    height: 12px;
+    margin-top: 22px;
+}
+#next:hover {
+    background-position: -45px -27px;
+}
+</style>
+<div class="continer">
+
+<div class="musixBox">
+
+<input type="text" placeholder="输入歌曲名" id="musicKeyWords">
+  <div class="musicPlayer">
+  <div class="musicInfo">
+  <img id="musicCover" src="http://p4.music.126.net/ugqgjlAdvXPgX4FGFo2eXw==/75866302334121.jpg?param=80y80">
+  </div>
+<!-- 	<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=86 src="http://music.163.com/outchain/player?type=2&id=168145&auto=1&height=66"></iframe>
+ --> 	
+ <div class="musicController">
+ 	<div id="next"></div>
+ 	<div id="play"></div>
+ 	<div id="prev"></div>
+</div>
+ 	<audio id="audioHandler" src="http://m2.music.126.net/K7TQv1uggESpMwlYo2hvlQ==/7724069186226916.mp3">
+		</audio>
+  </div>
+  <ul class="searchList">
+  
+	</ul>
+</div>
+
+
+</div>
+<script>
+$(document).ready(function(){
+	$.musicPlayer.init();
+	(function($){
+		$("#musicKeyWords").on('input',function(){
+			var keywords = $("#musicKeyWords").val();
+			if(keywords != ''){
+				getData(keywords);
+				$(".searchList").show();
+			}else{
+				//$(".searchList").hide();
+			}		
+		});
+		$("#musicKeyWords").on('focus',function(){
+			var keywords = $("#musicKeyWords").val();
+			if(keywords != ''){
+				getData(keywords);
+				$(".searchList").show();
+			}		
+		});
+		
+		$("#musicKeyWords").on('click',function(){
+			
+			return false;
+			//$(".searchList").hide();
+		});
+		
+		$(document).on('click',function(){
+			
+			//$(".searchList").hide();
+		});
+		
+		
+		function getData(keywords){
+			var html = '';
+			var searchURL = 'http://www.xuelin.cc/163music.php?type=1&key='+keywords;
+			$.getJSON(searchURL,function(response){
+				$.songs = response;
+				$.each(response.result.songs,function(i,song){
+					html += '<li data-id="' + song.id +'"><span class="musicName">' + song.name + ' - </span><span class="artist">' + song.artists[0].name + '</span></li>';
+				});
+				$(".searchList").html(html).ready(function(){
+					
+					$(".searchList li").on('click',function(){
+						var id = $(this).data('id');
+						var getInfoURL = 'http://www.xuelin.cc/163music.php?type=2&id='+id;
+						$.getJSON(getInfoURL,function(response){
+							if(response.songs[0].mp3Url != ''){
+								var song = response.songs[0];
+								var mp3Url = response.songs[0].mp3Url;
+								$.musicPlayer.musicList.push({id:song.id,name:song.name,artist:song.artists[0].name,ablum:song.album.blurPicUrl + '?param=80y80',mp3:song.mp3Url});
+								$.musicPlayer.playIndex = $.musicPlayer.musicList.length - 1;
+								$.musicPlayer.toPlay(mp3Url);
+							}else{
+								console.log('接口无音乐源，请稍后再试 id='+id);
+							}
+						})
+						/* var iframeHTML = '<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=250 height=86 src="http://music.163.com/outchain/player?type=2&id=' + $(this).data('id') + '&auto=1&height=66"></iframe>';
+						$('.musicPlayer').html(iframeHTML); */
+					});
+					
+				});
+				//console.log(data);
+			});
+			
+		}
+		
+		
+		
+	})($);
+	
+});
+</script>
+
+</body></html>
