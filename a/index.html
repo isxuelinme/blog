@@ -1,0 +1,121 @@
+<!doctype html>
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hello Amaze UI</title>
+
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Amaze UI" />
+<link rel="apple-touch-icon-precomposed"
+	href="assets/i/app-icon72x72@2x.png">
+
+<!-- Tile icon for Win8 (144x144 + tile color) -->
+<meta name="msapplication-TileImage"
+	content="assets/i/app-icon72x72@2x.png">
+<meta name="msapplication-TileColor" content="#0e90d2">
+
+<link rel="stylesheet" href="assets/css/amazeui.min.css">
+<link rel="stylesheet" href="assets/css/app.css">
+
+<style>
+.am-header-default {
+    background-color: #fdfcfc;
+}
+.am-header-default .am-header-title {
+    color: #333;
+}
+.am-tabs-d2 .am-tabs-nav>.am-active a {
+    line-height: 40px;
+    color: #657177;
+}
+.am-tabs-d2 .am-tabs-nav>.am-active:after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+    border: 6px rgba(0,0,0,0) solid;
+    content: "";
+    z-index: 1;
+    border-bottom-color: #f46c31;
+}
+.am-tabs-d2 .am-tabs-nav>.am-active {
+    position: relative;
+    background-color: #fcfcfc;
+    border-bottom: 2px solid #f46c31;
+}
+.am-tabs-bd {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    border-top: none;
+    z-index: 100;
+    -webkit-transition: height .3s;
+    transition: height .3s;
+}
+</style>
+</head>
+<body>
+	<header data-am-widget="header" class="am-header am-header-default">
+		<h1 class="am-header-title">Crim</h1>
+	</header>
+	<div id="tab" data-am-widget="tabs" class="am-tabs am-tabs-d2"
+		data-am-sticky>
+		<ul class="am-tabs-nav am-cf">
+			<li class="am-active"><a href="[data-tab-panel-0]">首页</a></li>
+			<li class=""><a href="[data-tab-panel-1]">文章</a></li>
+			<li class=""><a href="[data-tab-panel-2]">媒体</a></li>
+		</ul>
+		<div class="am-tabs-bd">
+			<div data-tab-panel-0 class="am-tab-panel am-active">
+				【青春】那时候有多好，任雨打湿裙角。忍不住哼起，心爱的旋律。绿油油的树叶，自由地在说笑。燕子忙归巢，风铃在舞蹈。经过青春的草地，彩虹忽然升起。即使视线渐渐模糊，它也在我心里。就像爱过的旋律，没人能抹去。因为生命存在失望，歌唱，所以才要歌唱。
+				【青春】那时候有多好，任雨打湿裙角。忍不住哼起，心爱的旋律。绿油油的树叶，自由地在说笑。燕子忙归巢，风铃在舞蹈。经过青春的草地，彩虹忽然升起。即使视线渐渐模糊，它也在我心里。就像爱过的旋律，没人能抹去。因为生命存在失望，歌唱，所以才要歌唱。
+				sjkdhgfjkdghdkjfghjkdfghjkdfghjksadfkln2342434545634534534543534534534534
+				435345345oi345io34534o5o</div>
+			<div data-tab-panel-1 class="am-tab-panel ">
+				【彩虹】那时候有多好，任雨打湿裙角。忍不住哼起，心爱的旋律。绿油油的树叶，自由地在说笑。燕子忙归巢，风铃在舞蹈。经过青春的草地，彩虹忽然升起。即使视线渐渐模糊，它也在我心里。就像爱过的旋律，没人能抹去。因为生命存在失望，歌唱，所以才要歌唱。
+			</div>
+			<div data-tab-panel-2 class="am-tab-panel ">
+				【歌唱】那时候有多好，任雨打湿裙角。忍不住哼起，心爱的旋律。绿油油的树叶，自由地在说笑。燕子忙归巢，风铃在舞蹈。经过青春的草地，彩虹忽然升起。即使视线渐渐模糊，它也在我心里。就像爱过的旋律，没人能抹去。因为生命存在失望，歌唱，所以才要歌唱。
+			</div>
+		</div>
+	</div>
+
+	<!--在这里编写你的代码-->
+
+	<!--[if (gte IE 9)|!(IE)]><!-->
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<!--<![endif]-->
+	<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+	<script src="assets/js/amazeui.min.js"></script>
+	<script>
+		console.log(111);
+		$('#tab').find('a').on('opened.tabs.amui', function(e) {
+			console.log('[%s] 选项卡打开了', $(this).text());
+		})
+	</script>
+</body>
+</html>
